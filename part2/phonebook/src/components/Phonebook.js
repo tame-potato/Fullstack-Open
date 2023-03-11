@@ -1,6 +1,5 @@
 
 const PhonebookEntry = ({person, handleDelete}) => {
-  console.log(person)
   return (
     <li>
         {person.name} {person.number}

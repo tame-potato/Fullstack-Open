@@ -1,0 +1,26 @@
+{
+  "name": "notesbackend",
+  "version": "1.0.0",
+  "description": "Backend for the notes app",
+  "main": "node index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "build:ui": "powershell Remove-Item -Recurse -Force ./build/ ; cd '../Notes App/' ; npm run build ; cp -r ./build '../Notes Backend'",
+    "deploy": "fly deploy",
+    "deploy:full": "npm run build:ui && npm run deploy",
+    "logs:prod": "fly logs"
+  },
+  "author": "Pablo Ruiz",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}

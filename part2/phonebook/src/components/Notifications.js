@@ -1,3 +1,4 @@
+
 const NotificationBanner = ({msg, color}) => {
     if (msg === null) { return null }
     const style = {
@@ -7,10 +8,13 @@ const NotificationBanner = ({msg, color}) => {
         borderStyle: 'solid',
         borderRadius: 5,
         padding: 10,
-        marginBottom: 10
+        marginBottom: 10,
+        whiteSpace: 'pre-line' 
     }
     return (
-        <div style={style}> {msg} </div>
+        <div style={style}> 
+            <text>{msg}</text> 
+        </div>
     )
 }
 

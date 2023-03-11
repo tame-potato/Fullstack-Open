@@ -42,16 +42,33 @@ const App = () => {
       }
     } 
     else {
-      entryServices.addEntry({name: newName, number: newNumber}).then(
-        (newPerson) => {
-          console.log(newPerson)
-          setSuccessMsg(`Added ${newPerson.name}`)
-          setTimeout(() => setSuccessMsg(null), 5000)
-          setPersons(persons.concat(newPerson))
-          setNewName('')
-          setNewNumber('')
-        }
-      )
+      entryServices.addEntry({name: newName, number: newNumber})
+        .then(
+          (newPerson) => {
+            console.log(newPerson)
+            setSuccessMsg(`Added ${newPerson.name}`)
+            setTimeout(() => setSuccessMsg(null), 5000)
+            setPersons(persons.concat(newPerson))
+            setNewName('')
+            setNewNumber('')
+          })
+        .catch(
+          (error) => {
+            let msg = ``
+            console.log(`New entry error description: ${error}`)
+            if (error.request.response.includes('VALIDATION_ERROR_NUMBER')){
+              msg =`The format of the number is incorrect.\n
+              It must contain two number separated by a dash.\n
+              The first number must be 2 or 3 characters long.\n
+              The total number of characters must be larger than 8.\n 
+              Example: 123-45678`
+            } else if (error.request.response.includes('VALIDATION_ERROR_NAME')) {
+              msg = `The format of the name is incorrect.\n
+              It must be at least 3 characters long.`
+            } else { msg = error.message }
+            setErrorMsg(msg)
+            setTimeout(() => setErrorMsg(null), 5000)
+          });
     }
   }
 
