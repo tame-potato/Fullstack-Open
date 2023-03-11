@@ -1,2 +1,5 @@
 
 .env
+Dockerfile
+fly.toml
+.dockerignore

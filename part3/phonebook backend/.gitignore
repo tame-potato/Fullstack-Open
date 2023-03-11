@@ -1,1 +1,8 @@
 .env
+Dockerfile
+.dockerignore
+.eslintrc
+.eslintignore
+fly.toml
+/node_modules
+/.vscode
