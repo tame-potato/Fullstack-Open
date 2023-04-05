@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url = '/api/phonebook'
+const url = 'http://localhost:3001/persons'
 
 const getEntries = () => {
     const request = axios.get(url)

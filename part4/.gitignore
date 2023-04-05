@@ -1,0 +1,5 @@
+.env
+.eslintrc
+.eslintignore
+/node_modules
+/.vscode
